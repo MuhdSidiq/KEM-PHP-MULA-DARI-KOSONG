@@ -52,10 +52,6 @@ foreach ($stocks as $stock) {
             $remarks = "Price Analysis Needed";
     }
 
-
-
-
-
     echo "<tr>";
     echo "<td>" . $stock["symbol"] . "</td>";
     echo "<td>" . $stock["company"] . "</td>";
