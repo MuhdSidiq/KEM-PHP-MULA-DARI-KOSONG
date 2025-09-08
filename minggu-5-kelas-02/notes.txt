@@ -1,0 +1,222 @@
+MYSQL TRAINING NOTES - MODULES 1-4
+=====================================
+
+MODULE 1: INTRODUCTION TO DATABASES AND MYSQL
+=============================================
+
+What are Databases?
+------------------
+A database is an organized collection of data that can be easily accessed, managed, and updated. Think of it like a digital filing cabinet where information is stored in a structured way.
+
+Why do we need databases?
+- Store large amounts of data efficiently
+- Allow multiple users to access data simultaneously
+- Provide data security and backup
+- Enable quick searching and filtering
+- Maintain data consistency and integrity
+
+Relational Database Concepts
+---------------------------
+Tables: Like spreadsheets, they store data in rows and columns
+- Example: A "customers" table with customer information
+
+Rows (Records): Each row represents one complete entry
+- Example: One customer's complete information
+
+Columns (Fields): Each column represents one type of data
+- Example: customer_name, email, phone_number
+
+What is MySQL?
+-------------
+MySQL is a popular open-source relational database management system (RDBMS) that uses SQL to manage data.
+
+Key features:
+- Free and open source
+- Fast and reliable
+- Works on many operating systems
+- Widely used in web applications
+
+MySQL Tools
+-----------
+Command Line Interface (CLI): Text-based interaction with MySQL
+GUI Tools:
+- phpMyAdmin (web-based)
+- MySQL Workbench (desktop application)
+- Provides visual interface for database management
+
+MODULE 2: BASIC SQL FUNDAMENTALS
+===============================
+
+What is SQL?
+-----------
+SQL (Structured Query Language) is the standard language for communicating with relational databases. It's used to create, read, update, and delete data.
+
+SQL Syntax Rules
+---------------
+- SQL statements end with a semicolon (;)
+- SQL is not case-sensitive for keywords, but convention uses UPPERCASE
+- String values must be enclosed in single quotes (' ')
+- MySQL allows double quotes (" ") for strings, but single quotes are preferred
+
+Examples:
+SELECT * FROM customers;
+SELECT * from customers;  -- Both work the same
+
+Comments in SQL
+--------------
+Single line comments:
+-- This is a comment
+SELECT * FROM customers; -- This is also a comment
+
+Multi-line comments:
+/* This is a
+   multi-line comment */
+
+MySQL-Specific Features
+----------------------
+- Uses backticks (`) for table/column names with special characters
+- Case sensitivity depends on operating system
+- Supports various storage engines (InnoDB, MyISAM)
+
+MODULE 3: CREATING AND MANAGING DATABASES
+========================================
+
+Creating a Database
+------------------
+CREATE DATABASE database_name;
+
+Example:
+CREATE DATABASE company_db;
+
+Selecting a Database to Use
+--------------------------
+USE database_name;
+
+Example:
+USE company_db;
+
+Viewing Available Databases
+--------------------------
+SHOW DATABASES;
+
+This displays all databases you have access to.
+
+Deleting a Database (Use with Extreme Caution!)
+----------------------------------------------
+DROP DATABASE database_name;
+
+Example:
+DROP DATABASE old_company_db;
+
+⚠️ Warning: DROP DATABASE permanently deletes the entire database and all its data!
+
+Best Practices
+-------------
+- Use descriptive database names
+- Follow naming conventions (lowercase, underscores)
+- Always backup before dropping databases
+- Use meaningful names that describe the database purpose
+
+MODULE 4: CREATING AND MODIFYING TABLES
+======================================
+
+CREATE TABLE Syntax
+------------------
+CREATE TABLE table_name (
+    column1_name datatype constraints,
+    column2_name datatype constraints,
+    column3_name datatype constraints
+);
+
+Common MySQL Data Types
+----------------------
+Numeric Types:
+- INT - Integer numbers (-2,147,483,648 to 2,147,483,647)
+- DECIMAL(m,d) - Fixed-point numbers (m=total digits, d=decimal places)
+- FLOAT - Floating-point numbers
+
+String Types:
+- VARCHAR(n) - Variable-length strings (n = maximum characters)
+- CHAR(n) - Fixed-length strings
+- TEXT - Large text data
+
+Date/Time Types:
+- DATE - Date values (YYYY-MM-DD)
+- TIME - Time values (HH:MM:SS)
+- DATETIME - Date and time combined
+- TIMESTAMP - Timestamp values
+
+Primary Keys and AUTO_INCREMENT
+------------------------------
+Primary Key: A unique identifier for each row in a table
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    email VARCHAR(150)
+);
+
+AUTO_INCREMENT: Automatically generates unique numbers
+
+CREATE TABLE customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    email VARCHAR(150)
+);
+
+Complete Table Example
+---------------------
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    hire_date DATE,
+    salary DECIMAL(10,2)
+);
+
+Modifying Tables with ALTER TABLE
+--------------------------------
+Adding a column:
+ALTER TABLE table_name 
+ADD COLUMN column_name datatype;
+
+Example:
+ALTER TABLE employees 
+ADD COLUMN phone_number VARCHAR(15);
+
+Dropping a column:
+ALTER TABLE table_name 
+DROP COLUMN column_name;
+
+Example:
+ALTER TABLE employees 
+DROP COLUMN phone_number;
+
+Viewing Table Structure
+----------------------
+DESCRIBE table_name;
+-- OR
+DESC table_name;
+
+Viewing All Tables in Database
+-----------------------------
+SHOW TABLES;
+
+Deleting a Table
+---------------
+DROP TABLE table_name;
+
+Example:
+DROP TABLE old_employees;
+
+Best Practices for Table Design
+------------------------------
+- Use descriptive table and column names
+- Choose appropriate data types
+- Always define a primary key
+- Use consistent naming conventions
+- Consider data size limits when choosing VARCHAR lengths
+
+END OF MODULES 1-4
+==================
